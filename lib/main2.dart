@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'router/router.dart';
 
 void main(List<String> args) {
-  runApp(const ProviderScope(child: Myapp()));
+  runApp(const Myapp());
 }
 
-class Myapp extends ConsumerWidget {
+class Myapp extends StatelessWidget {
   const Myapp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final router = ref.watch(routerProvider);
-
+  Widget build(BuildContext context) {
     return MaterialApp.router(
       title: "Is this a bug, or...?",
       debugShowCheckedModeBanner: true,
-      routerConfig: router,
+      routerConfig: globalRouter,
       themeMode: ThemeMode.light,
     );
   }
